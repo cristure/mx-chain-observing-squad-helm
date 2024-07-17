@@ -1,0 +1,11 @@
+# Define the number of shards (N+1)
+shards:
+  - "0"
+  - "1"
+  - "2"
+  - "metachain"
+
+namespace: multiversx
+
+proxyService:
+  type: ClusterIP

@@ -1,0 +1,18 @@
+{{- range .Values.shards }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: observer-{{ . }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    app: observer-{{ . }}
+spec:
+  containers:
+  - name: observer-1
+    image: multiversx/chain-observer:v1.7.13.0
+    args: ["--destination-shard-as-observer={{ . }}", "--validator-key-pem-file=/go/mx-chain-go/cmd/keygenerator/keygenerator/validatorKey.pem",  "--display-name=observer{{ . }}"]
+  initContainers:
+  - name: keygenerator
+    image: multiversx/chain-keygenerator
+---
+{{- end }}

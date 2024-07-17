@@ -1,0 +1,15 @@
+{{- range .Values.shards }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: observer-{{ . }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  selector:
+    app: observer-{{ . }}
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+---
+{{- end }}
