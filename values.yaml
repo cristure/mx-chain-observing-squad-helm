@@ -5,7 +5,5 @@ shards:
   - "2"
   - "metachain"
 
-namespace: multiversx
-
 proxyService:
   type: ClusterIP
